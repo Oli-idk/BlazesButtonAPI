@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.UI.Elements;
 using VRC.UI.Elements.Menus;
-using static VRC.UI.Elements.UIPage;
+using TransitionType = VRC.UI.Elements.UIPage.TransitionType;
 
 namespace ApolloCore.API.QM
 {
@@ -25,6 +24,12 @@ namespace ApolloCore.API.QM
         {
             btnQMLoc = location.GetMenuName();
             Initialize(false, btnText, posX, posY, toolTipText, menuTitle, halfButton);
+        }
+
+        public QMNestedButton(string location, float posX, float posY, string btnText, string toolTipText, string menuTitle, bool halfButton = false)
+        {
+            btnQMLoc = location;
+            Initialize(location.StartsWith("Menu_"), btnText, posX, posY, toolTipText, menuTitle, halfButton);
         }
 
         private void Initialize(bool isRoot, string btnText, float btnPosX, float btnPosY, string btnToolTipText, string menuTitle, bool halfButton)
